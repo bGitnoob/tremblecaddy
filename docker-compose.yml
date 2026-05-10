@@ -18,4 +18,4 @@ services:
     environment:
       #- PUID=1000
       #- PGID=1000
-      - CF_API_TOKEN={CF_API_TOKEN}
+      - CF_API_TOKEN=${CF_API_TOKEN}

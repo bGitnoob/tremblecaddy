@@ -5,13 +5,12 @@
 	# Dynamic DNS Updater
 	dynamic_dns {
 		provider cloudflare {
-			api_key {}
-			api_secret_key {}
+			api_key = {env.CF_API_TOKEN}
 		}
 		domains {
-			# @ handles tremble.dev
+			# @ handles site.domain (change to yours)
 			# * handles all subdomains
-			tremble.dev @ *
+			site.domain @ *
 		}
 	}
 
@@ -25,3 +24,11 @@
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 	}
 }
+
+# --- Example Site ---
+# Uncomment and edit this block to actually proxy something
+# 
+# sub.site.domain {
+#     import hsts
+#     reverse_proxy localhost:port
+# }
