@@ -1,0 +1,20 @@
+services:
+  caddy:
+    image: caddy:latest
+    build: .
+    env_file:
+      - .env
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./conf:/etc/caddy #for the Caddyfile (main configurator)
+      - ./site:/srv #not sure what gets saved here
+      - ./data:/data #for certificates and stuff
+      - ./config:/config #not sure what saves here either
+    environment:
+      #- PUID=1000
+      #- PGID=1000

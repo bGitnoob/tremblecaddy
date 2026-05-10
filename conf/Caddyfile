@@ -1,0 +1,29 @@
+{
+	#Real email for Let's Encrypt Cert Notifications
+	email your-email@here
+
+	# Dynamic DNS Updater
+	dynamic_dns {
+		provider cloudflare {
+			api_key {}
+			api_secret_key {}
+		}
+		domains {
+			# @ handles tremble.dev
+			# * handles all subdomains
+			tremble.dev @ *
+		}
+	}
+
+	# ACME DNS Tells Caddy to use Cloudflare module for ALL certificates - no port 80 needed
+	acme_dns cloudflare {
+		api_key {}
+		api_secret_key {}
+	}
+}
+
+(hsts) {
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	}
+}
