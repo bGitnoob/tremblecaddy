@@ -16,10 +16,8 @@
 	}
 
 	# ACME DNS Tells Caddy to use Cloudflare module for ALL certificates - no port 80 needed
-	acme_dns cloudflare {
-		api_key {}
-		api_secret_key {}
-	}
+	acme_dns cloudflare [api_key]
+	
 }
 
 (hsts) {
